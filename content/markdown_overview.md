@@ -6,6 +6,8 @@ date = 2018-07-18
 insert_anchor_links = "right"
 [taxonomies]
 categories = ["Real Content"]
+[extra]
+toc = true
 +++
 
 Testing every `elements` you can find in [CommonMark](http://commonmark.org).

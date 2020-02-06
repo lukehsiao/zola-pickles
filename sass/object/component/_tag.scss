@@ -1,0 +1,16 @@
+.c-tag {
+  display: inline-block;
+  margin: 8px 6px 0 0;
+  padding: 4px;
+  font-size: 1.6rem;
+  color: #555;
+  &::before {
+    content: "#";
+    display: inline-block;
+    margin-right: 2px;
+    color: currentColor;
+  }
+  &:hover {
+    background: #fafafa;
+  }
+}

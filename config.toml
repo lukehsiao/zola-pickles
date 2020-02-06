@@ -1,15 +1,87 @@
-# The URL the site will be built for
-base_url = "https://example.com"
+# Base URL of the site, the only required config argument
+base_url = "example.com"
 
-# Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
+# Used in RSS by default
+title = "Example Site"
+description = "A demo of the Zola Pickles theme"
+# The default language, used in RSS
+default_language = "en"
 
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+# Highlight all code blocks found
 highlight_code = true
 
-# Whether to build a search index to be used later on by a JavaScript library
+# Which theme to use for the code highlighting.
+# See below for list of accepted values
+highlight_theme = "solarized-light"
+
+# Whether to generate a RSS feed automatically
+generate_rss = true
+
+# The number of articles to include in the RSS feed. Will include all items if
+# not set (the default).
+rss_limit = 10
+
+# Whether to copy or hardlink files in static/ directory. Useful for sites
+# whose static files are large. Note that for this to work, both static/ and
+# output directory need to be on the same filesystem. Also, theme's static/
+# files are always copies, regardles of this setting. False by default.
+# hard_link_static = false
+
+# The taxonomies to be rendered for that site and their configuration
+# Example:
+#     taxonomies = [
+#       {name = "tags", rss = true}, # each tag will have its own RSS feed
+#       {name = "tags", lang = "fr"}, # you can have taxonomies with the same name in multiple languages
+#       {name = "categories", paginate_by = 5},  # 5 items per page for a term
+#       {name = "authors"}, # Basic definition: no RSS or pagination
+#     ]
+#
+taxonomies = []
+
+# The additional languages for that site
+# Example:
+#     languages = [
+#       {code = "fr", rss = true}, # there will be a RSS feed for French content
+#       {code = "fr", search = true}, # there will be a Search Index for French content
+#       {code = "it"}, # there won't be a RSS feed for Italian content
+#     ]
+#
+languages = []
+
+# Whether to compile the Sass files found in the `sass` directory
+compile_sass = true
+
+# Whether to build a search index out of the pages and section
+# content for the `default_language`
 build_search_index = false
 
+# A list of glob patterns specifying asset files to ignore when
+# processing the content directory.
+# Defaults to none, which means all asset files are copied over to the public folder.
+# Example:
+#     ignored_content = ["*.{graphml,xlsx}", "temp.*"]
+ignored_content = []
+
+# A list of directories to search for additional `.sublime-syntax` files in.
+extra_syntaxes = []
+
+# Optional translation object. The key if present should be a language code.
+# Example:
+#     default_language = "fr"
+#
+#     [translations]
+#     [translations.fr]
+#     title = "Un titre"
+#
+#     [translations.en]
+#     title = "A title"
+#
+[translations]
+
+# You can put any kind of data in there and it
+# will be accessible in all templates
 [extra]
-# Put all your custom variables here
+subtitle = "Example subtitle"
+copyright = "Copyright <i class=\"fas fa-heart\" style=\"color: red;\"></i> authors year"
+analytics = ""
+katex_enable = true

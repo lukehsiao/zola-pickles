@@ -1,0 +1,42 @@
+@import "../../variables";
+
+.c-article {
+  &__title {
+    font-size: 2.4rem;
+    & a {
+      color: $color-title;
+      &:hover {
+        color: $link-hover;
+      }
+    }
+  }
+  &__meta {
+    font-size: 1.4rem;
+    line-height: 1;
+    font-style: italic;
+    color: $color-meta;
+  }
+  &__summary {
+    font-size: 1.4rem;
+    color: $color-text;
+    line-height: 1.5;
+    & p {
+      margin: 0;
+    }
+  }
+  &__btn {
+    display: inline-block;
+    padding-bottom: 4px;
+    font-size: 1.6rem;
+    &::after {
+      content: '';
+      display: inline-block;
+      margin-left: 3px;
+      width: 5px;
+      height: 5px;
+      border: solid currentColor;
+      border-width: 1px 1px 0 0;
+      transform: rotate(45deg);
+    }
+  }
+}
