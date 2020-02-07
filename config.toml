@@ -85,3 +85,4 @@ subtitle = "Example subtitle"
 copyright = "Copyright <i class=\"fas fa-heart\" style=\"color: red;\"></i> authors year"
 analytics = ""
 katex_enable = true
+instantpage_enable = true

@@ -42,6 +42,9 @@ analytics = ""
 
 # See below
 katex_enable = false
+
+# See below
+instantpage_enable = false
 ```
 
 ### KaTeX math formula support
@@ -68,3 +71,8 @@ Your caption here.
 ### Fontawesome
 
 This theme includes fontawesome, so that fontawesome icons can be directly used.
+
+### Instant.page
+
+The theme contains instant.page prefetching. This can be enabled by setting
+`instantpage_enable = true` in the `extra` section of `config.toml`.

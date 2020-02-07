@@ -28,8 +28,11 @@
 
         {% block js -%}
         <script defer type="text/javascript" src="{{ get_url(path="js/fontawesome/all.js") }}"></script>
+        {% if config.extra.instantpage_enable -%}
         <script src="{{ get_url(path="js/instantpage.min.js") }}" type="module" defer></script>
+        {%- endif %}
         {%- endblock js %}
+
 
         {% block css -%}
         <link rel="stylesheet" href="{{ get_url(path="base.css") }}" />
