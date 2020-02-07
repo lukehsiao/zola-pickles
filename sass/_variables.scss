@@ -4,7 +4,7 @@ $color-title: #111;
 $color-meta: #888;
 $link-color: #337ab7;
 $link-hover: #175081;
-$fig-height: 30em;
+$fig-height: 45em;
 
 $SanFrancisco: -apple-system, BlinkMacSystemFont, YakuHanJP,
   'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
@@ -34,5 +34,3 @@ $breakpoint-down: (
     @content;
   }
 }
-
-
