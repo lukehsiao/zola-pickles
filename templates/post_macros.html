@@ -12,3 +12,26 @@
         </p>
     </header>
 {% endmacro title %}
+
+
+{% macro polish(content) %}
+    {{ content |
+       replace(from="--", to="–") |
+       replace(from="---", to="—") |
+       replace(from=":smile:", to="😄") |
+       replace(from=":sushi:", to="🍣") |
+       replace(from=":rice_ball:", to="🍙") |
+       replace(from=":ramen:", to="🍜") |
+       replace(from=":egg:", to="🥚") |
+       replace(from=":+1:", to="👍") |
+       replace(from=":thumbsup:", to="👍") |
+       replace(from=":stuck_out_tongue:", to="😛") |
+       replace(from=":grinning:", to="😀") |
+       replace(from=":frowning:", to="😦") |
+       replace(from=":heart:", to="❤") |
+       replace(from=":disappointed:", to="😞") |
+       replace(from=":tada:", to="🎉") |
+       replace(from=":dumpling:", to="🥟") |
+       safe
+    }}
+{% endmacro content %}

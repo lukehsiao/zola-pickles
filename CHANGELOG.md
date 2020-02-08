@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- [@lukehsiao][lh]: Enhanced markdown substitutions (dashes, emojis).
+- [@lukehsiao][lh]: Enhanced youtube and vimeo shortcodes.
 - [@lukehsiao][lh]: Include instant.page prefetching
 
 ## [0.1.0] - 2020-02-06

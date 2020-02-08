@@ -32,12 +32,12 @@
                 <ul>
                     {% for h1 in toc %}
                     <li>
-                        <a href="{{h1.permalink | safe}}" class="toc-link">{{ h1.title }}</a>
+                        <a href="{{h1.permalink | safe}}" class="toc-link">{{ post_macros::polish(content=h1.title) }}</a>
                         {% if h1.children %}
                         <ul>
                             {% for h2 in h1.children %}
                             <li>
-                                <a href="{{h2.permalink | safe}}" class="toc-link">{{ h2.title }}</a>
+                                <a href="{{h2.permalink | safe}}" class="toc-link">{{ post_macros::polish(content=h2.title) }}</a>
                             </li>
                             {% endfor %}
                         </ul>
@@ -50,7 +50,7 @@
     </div>
     {%- endif %}
     <section id="js-article" class="p-article__body">
-        {{ page.content | safe }}
+        {{ post_macros::polish(content=page.content) }}
     </section>
     <footer>
         <nav class="c-pagination p-pagination">

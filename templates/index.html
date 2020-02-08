@@ -68,7 +68,7 @@
             <article class="c-article p-list-article">
                 {{ post_macros::title(page=page) }}
                 <div class="c-article__summary">
-                    {{ page.summary | safe }}
+                    {{ post_macros::polish(content=page.summary) }}
                 </div>
                 <a href="{{ page.permalink }}" class="c-article__btn p-list-article__btn">Read more...</a>
             </article>
@@ -98,7 +98,7 @@
           {% block footer -%}
           <p class="p-copyright">
               {% if config.extra.copyright -%}
-              {{ config.extra.copyright | safe }}
+              {{ post_macros::polish(content=config.extra.copyright) }}
               {%- endif %}
           </p>
           {%- endblock footer %}

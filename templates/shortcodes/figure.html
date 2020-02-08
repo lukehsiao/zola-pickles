@@ -1,9 +1,12 @@
+{% import "post_macros.html" as post_macros %}
+
 <figure {% if class %}class="{{ class }}"{% endif %}>
     <a href="{% if link %}{{ link }}{% else %}{{ src }}{% endif %}">
         <img src="{{ src }}" {%- if alt %}alt="{{ alt }}"{% endif %} {%- if border %}style="border:{{ border }}px solid black"{% endif %}/>
     </a>
     <figcaption>
         {% if title %}<h4>{{ title }}</h4>{% endif %}
-        {{ body | markdown | safe }}
+        {% set content = body | markdown %}
+        {{ post_macros::polish(content=content) }}
     </figcaption>
 </figure>
