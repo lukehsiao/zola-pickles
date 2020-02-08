@@ -1,5 +1,5 @@
 +++
-paginate_by = 5
+paginate_by = 10
 sort_by = "date"
-insert_anchor_links = "right"
+insert_anchor_links = "left"
 +++
