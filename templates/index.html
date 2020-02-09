@@ -98,7 +98,8 @@
           {% block footer -%}
           <p class="p-copyright">
               {% if config.extra.copyright -%}
-              {{ post_macros::polish(content=config.extra.copyright) }}
+              {% set content = config.extra.copyright | markdown(inline=true) %}
+              {{ post_macros::polish(content=content) }}
               {%- endif %}
           </p>
           {%- endblock footer %}
