@@ -16,8 +16,6 @@
 
 {% macro polish(content) %}
     {{ content |
-       replace(from="--", to="–") |
-       replace(from="---", to="—") |
        replace(from=":smile:", to="😄") |
        replace(from=":sushi:", to="🍣") |
        replace(from=":rice_ball:", to="🍙") |
