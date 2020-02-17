@@ -24,13 +24,13 @@
             </div>
         </div>
     </header>
-    {% if toc and page.extra.toc -%}
+    {% if page.toc and page.extra.toc -%}
     <div class="post-toc" id="post-toc">
         <h2 class="post-toc-title">Contents</h2>
         <div class="post-toc-content always-active">
             <nav id="TableOfContents">
                 <ul>
-                    {% for h1 in toc %}
+                    {% for h1 in page.toc %}
                     <li>
                         <a href="{{h1.permalink | safe}}" class="toc-link">{{ post_macros::polish(content=h1.title) }}</a>
                         {% if h1.children %}
