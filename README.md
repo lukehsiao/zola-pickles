@@ -47,6 +47,8 @@ katex_enable = false
 instantpage_enable = false
 ```
 
+A full example configuration is included in config.toml.
+
 ### KaTeX math formula support
 
 This theme contains math formula support using [KaTeX](https://katex.org/),
@@ -65,7 +67,6 @@ This them also includes a figure shortcode for convenience in captioning figures
 {% figure(link="https://www.example.com/", src="https://www.example.com/img.jpeg", alt="sample alt text") %}
 Your caption here.
 {% end %}
-
 ```
 
 ### Fontawesome
