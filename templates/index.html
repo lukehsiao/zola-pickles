@@ -71,7 +71,11 @@
             <article class="c-article p-list-article">
                 {{ post_macros::title(page=page) }}
                 <div class="c-article__summary">
+                    {% if page.summary -%}
                     {{ post_macros::polish(content=page.summary) }}
+                    {% else %}
+                    {{ post_macros::polish(content=page.content) | truncate(length=280) }}
+                    {%- endif %}
                 </div>
                 <a href="{{ page.permalink }}" class="c-article__btn p-list-article__btn">Read more...</a>
             </article>

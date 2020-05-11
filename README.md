@@ -27,7 +27,9 @@ insert_anchor_links = "right"
 +++
 ```
 
-## Options
+## Reference guides
+
+## Configuration Options
 
 ```toml
 [extra]
@@ -77,3 +79,11 @@ This theme includes fontawesome, so that fontawesome icons can be directly used.
 
 The theme contains instant.page prefetching. This can be enabled by setting
 `instantpage_enable = true` in the `extra` section of `config.toml`.
+
+## Showing article summaries
+
+By default, the theme will use the first 280 characters of your post as a
+summary, if a proper [page
+summary](https://www.getzola.org/documentation/content/page/#summary) using
+`<!-- more -->` is not provided. For more sensible summaries, we recommend using
+the manual more indicator.
