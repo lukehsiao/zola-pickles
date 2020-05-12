@@ -16,9 +16,11 @@
         {%- endblock title %}
 
         {% block description -%}
+        {% if config.description -%}
         <meta name="description" content="{{ config.description }}">
         <meta property="og:description" content="{{ config.description }}">
         <meta name="twitter:description" content="{{ config.description | truncate(length=200) }}">
+        {%- endif %}
         {%- endblock description %}
 
         {% block meta -%}
