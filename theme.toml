@@ -3,7 +3,7 @@ description = "A modern, simple, clean blog theme for Zola."
 license = "MIT OR Apache-2.0"
 homepage = "https://github.com/lukehsiao/zola-pickles"
 # The minimum version of Zola required
-min_version = "0.10.0"
+min_version = "0.11.0"
 # An optional live demo URL
 demo = ""
 
