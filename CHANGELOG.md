@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Changed
 
+- [@lukehsiao][lh]: Switch to Atom 1.0 feed as default.
 - [@lukehsiao][lh]: Show the first 280 chars of page in place of summary if
   summary is missing.
 - [@lukehsiao][lh]: Skip meta description if config.description is missing.
@@ -24,5 +25,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 Initial release on GitHub.
 
 [lh]: https://github.com/lukehsiao
-[unreleased]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.0...master
+[Unreleased]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.0...master
 [0.1.0]: https://github.com/lukehsiao/zola-pickles/releases/tag/v0.1.0
