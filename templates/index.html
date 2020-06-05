@@ -10,7 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 
         {% block title -%}
-        <title>{{ config.title }} | {{ config.extra.subtitle }}</title>
+            {% if config.extra.subtitle %}
+                <title>{{ config.title }} | {{ config.extra.subtitle }}</title>
+            {% else %}
+                <title>{{ config.title }}</title>
+            {% endif %}
         <meta property="og:title" content="{{ config.title }}" />
         <meta name="twitter:title" content="{{ config.title }}" />
         {%- endblock title %}
