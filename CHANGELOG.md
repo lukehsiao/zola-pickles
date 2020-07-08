@@ -15,14 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [@lukehsiao]: Enhanced youtube and vimeo shortcodes.
 - [@lukehsiao]: Include instant.page prefetching
 
-## Changed
+### Changed
 
 - [@lukehsiao]: Switch to Atom 1.0 feed as default.
 - [@lukehsiao]: Show the first 280 chars of page in place of summary if
   summary is missing.
 - [@lukehsiao]: Skip meta description if config.description is missing.
 
-## Fixed
+### Fixed
 
 - [@urbanslug]: Fix KaTeX shortcode to properly escape characters.
 - [@rminderhoud]: Fix template crash when subtitle is missing.
