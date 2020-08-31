@@ -80,7 +80,7 @@
                     {% if page.summary -%}
                     {{ post_macros::polish(content=page.summary) }}
                     {% else %}
-                    {{ post_macros::polish(content=page.content) | truncate(length=280) }}
+                    {{ post_macros::polish(content=page.content) | striptags | truncate(length=280) }}
                     {%- endif %}
                 </div>
                 <a href="{{ page.permalink }}" class="c-article__btn p-list-article__btn">Read more...</a>
