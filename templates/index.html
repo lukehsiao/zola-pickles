@@ -78,9 +78,9 @@
                 {{ post_macros::title(page=page) }}
                 <div class="c-article__summary">
                     {% if page.summary -%}
-                    {{ post_macros::polish(content=page.summary) }}
+                    {{ page.summary | safe }}
                     {% else %}
-                    {{ post_macros::polish(content=page.content) | striptags | truncate(length=280) }}
+                    {{ page.content | striptags | truncate(length=280) | safe }}
                     {%- endif %}
                 </div>
                 <a href="{{ page.permalink }}" class="c-article__btn p-list-article__btn">Read more...</a>
@@ -112,7 +112,7 @@
           <p class="p-copyright">
               {% if config.extra.copyright -%}
               {% set content = config.extra.copyright | markdown(inline=true) %}
-              {{ post_macros::polish(content=content) }}
+              {{ content | safe }}
               {%- endif %}
           </p>
           {%- endblock footer %}

@@ -10,7 +10,7 @@
 {% block content %}
 <article class="p-article">
     <header>
-        <h1>{{ page.title }}</h1>
+        <h1>{{ page.title | markdown | striptags }}</h1>
         <div>
             <div class="c-time">
 
@@ -32,12 +32,12 @@
                 <ul>
                     {% for h1 in page.toc %}
                     <li>
-                        <a href="{{h1.permalink | safe}}" class="toc-link">{{ post_macros::polish(content=h1.title) }}</a>
+                        <a href="{{h1.permalink | safe}}" class="toc-link">{{ h1.title }}</a>
                         {% if h1.children %}
                         <ul>
                             {% for h2 in h1.children %}
                             <li>
-                                <a href="{{h2.permalink | safe}}" class="toc-link">{{ post_macros::polish(content=h2.title) }}</a>
+                                <a href="{{h2.permalink | safe}}" class="toc-link">{{ h2.title }}</a>
                             </li>
                             {% endfor %}
                         </ul>
@@ -50,7 +50,7 @@
     </div>
     {%- endif %}
     <section id="js-article" class="p-article__body">
-        {{ post_macros::polish(content=page.content) }}
+        {{ page.content | safe }}
     </section>
     <footer>
         <nav class="c-pagination p-pagination">

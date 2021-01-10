@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2021-01-09
+
+This update relies on zola v0.13.0 features.
+
+### Removed
+
+- [@lukehsiao]: Removed "polish" macro in favor of built-in emojify support.
+
 ## [0.1.1] - 2020-07-07
 
 ### Added
@@ -35,6 +43,7 @@ Initial release on GitHub.
 [@rminderhoud]: https://github.com/rminderhoud
 [@urbanslug]: https://github.com/urbanslug
 
-[Unreleased]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.1...master
+[Unreleased]: https://github.com/lukehsiao/zola-pickles/compare/v0.2.0...master
+[0.2.0]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/lukehsiao/zola-pickles/releases/tag/v0.1.0

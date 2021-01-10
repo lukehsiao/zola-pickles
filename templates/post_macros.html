@@ -1,35 +1,14 @@
 {% macro title(page) %}
     <header>
-        <h2 class="c-title c-article__title"><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+        <h2 class="c-title c-article__title"><a href="{{ page.permalink }}">{{ page.title | markdown | striptags | safe }}</a></h2>
         <p class="c-article__meta">
             <time datetime="{{ page.date | date(format="%F") | safe }}">
                 {{ page.date | date(format="%F") }}
             </time>
             {% if page.extra.author -%}
-              by {{ page.extra.author}}
+              by {{ page.extra.author }}
             {%- endif %}
             {{ " - " }}({{ page.reading_time }} min read)
         </p>
     </header>
 {% endmacro title %}
-
-
-{% macro polish(content) %}
-    {{ content |
-       replace(from=":smile:", to="😄") |
-       replace(from=":sushi:", to="🍣") |
-       replace(from=":rice_ball:", to="🍙") |
-       replace(from=":ramen:", to="🍜") |
-       replace(from=":egg:", to="🥚") |
-       replace(from=":+1:", to="👍") |
-       replace(from=":thumbsup:", to="👍") |
-       replace(from=":stuck_out_tongue:", to="😛") |
-       replace(from=":grinning:", to="😀") |
-       replace(from=":frowning:", to="😦") |
-       replace(from=":heart:", to="❤") |
-       replace(from=":disappointed:", to="😞") |
-       replace(from=":tada:", to="🎉") |
-       replace(from=":dumpling:", to="🥟") |
-       safe
-    }}
-{% endmacro content %}
