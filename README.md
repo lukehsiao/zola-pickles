@@ -1,5 +1,5 @@
 # Pickles
-Pickles is a clean, responsive blog theme based on the Hugo theme with the same name featuring pagination.
+Pickles is a clean, responsive blog theme for [Zola](https://www.getzola.org/) based on the Hugo theme with the same name featuring pagination.
 
 ![pickles screenshot](https://github.com/lukehsiao/zola-pickles/blob/master/screenshot.png?raw=true)
 
