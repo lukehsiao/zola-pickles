@@ -2,19 +2,21 @@
 
 .c-article {
   &__title {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     & a {
       color: $color-title;
       &:hover {
         color: $link-hover;
       }
     }
+    margin-bottom: 0;
   }
   &__meta {
     font-size: 1.4rem;
     line-height: 1;
     font-style: italic;
     color: $color-meta;
+    margin-top: 0;
   }
   &__summary {
     font-size: 1.4rem;
