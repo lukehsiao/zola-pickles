@@ -109,8 +109,9 @@
                 </div>
                 <span class="c-pagination__count p-pagination__count">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
             </nav>
-
             {%- endblock content %}
+            {% block webring -%}
+            {%- endblock webring %}
         </main>
 
 
