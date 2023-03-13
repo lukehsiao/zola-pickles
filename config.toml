@@ -38,7 +38,10 @@ feed_limit = 20
 #       {name = "authors"}, # Basic definition: no feed or pagination
 #     ]
 #
-taxonomies = []
+taxonomies = [
+    {name = "tags"},
+    {name = "categories"},
+]
 
 # The additional languages for the site.
 # Example:
@@ -48,7 +51,7 @@ taxonomies = []
 #       {code = "it"}, # there won't be a feed for Italian content
 #     ]
 #
-languages = []
+#languages = []
 
 # When set to "true", the Sass files in the `sass` directory in the site root are compiled.
 # Sass files in theme directories are always compiled.
