@@ -1,6 +1,6 @@
 name = "pickles"
 description = "A modern, simple, clean blog theme for Zola."
-license = "MIT OR Apache-2.0"
+license = "BlueOak-1.0.0"
 homepage = "https://github.com/lukehsiao/zola-pickles"
 # The minimum version of Zola required
 min_version = "0.13.0"
