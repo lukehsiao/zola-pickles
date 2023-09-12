@@ -1,11 +1,41 @@
-# Changelog
+## [0.3.0] - 2023-09-12
 
-All notable changes to this project will be documented in this file.
+### Bug Fixes
+- (index) Use lang variable instead of config.default_language
+- (fonts) Include multiple weights
+- Match base font-size with the one used by articles
+- Update theme for zola 0.17.1 (#10)
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### Build and Dependencies
+- (deps) Update to KaTeX v0.16.3
+- Add justfile for convenience
 
-## [Unreleased]
+### CI/CD
+- Add netlify configuration
+
+### Features
+- Add webring block for pages
+- (tables) Add table shortcode and style like booktabs
+
+### Miscellaneous Tasks
+- Increase copyright footer font size to 1.4rem
+- Match config.toml with the demo site
+- Relicense to `BlueOak-1.0.0`
+
+### Refactor
+- (font) Switch body font to Atkinson Hyperlegible
+    - **BREAKING**: If a user was using the SourceSansPro or SanFrancisco
+      variables before, they will be broken now. But, this way, the
+      variable names are more general.
+- Allow zooming and scaling
+
+### Styling
+- (templates/index) Remove unnecessary newline
+- Adopt `selenized-white` color scheme and naming
+    - **BREAKING**: The variables for colors are renamed, so if customization was
+      done based on those names, they will need to be updated.
+
+[0.3.0]: https://github.com/lukehsiao/zola-pickles/compare/v0.3.0...v0.3.0
 
 ## [0.2.0] - 2021-01-09
 
