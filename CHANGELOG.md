@@ -73,7 +73,6 @@ Initial release on GitHub.
 [@rminderhoud]: https://github.com/rminderhoud
 [@urbanslug]: https://github.com/urbanslug
 
-[Unreleased]: https://github.com/lukehsiao/zola-pickles/compare/v0.2.0...master
 [0.2.0]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/lukehsiao/zola-pickles/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/lukehsiao/zola-pickles/releases/tag/v0.1.0
