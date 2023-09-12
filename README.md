@@ -1,7 +1,21 @@
-# Pickles
-Pickles is a clean, responsive blog theme for [Zola](https://www.getzola.org/) based on the Hugo theme with the same name featuring pagination.
+<h1 align="center">
+    🥒<br>
+    zola-pickes
+</h1>
+<div align="center">
+    <strong>Pickles is a clean, responsive blog theme for <a href="https://www.getzola.org/">Zola</a> based on the <a href="https://github.com/mismith0227/hugo_theme_pickles">Hugo theme</a> with the same name.</strong>
+</div>
+<br>
+<div align="center">
+  <a href="https://effervescent-chebakia-056748.netlify.app/">
+    <img src="https://img.shields.io/badge/demo-website-forestgreen" alt="demo website"></a>
+  <a href="https://github.com/lukehsiao/zola-pickles/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-BlueOak--1.0.0-blue" alt="License">
+  </a>
+</div>
+<br>
 
-![pickles screenshot](https://github.com/lukehsiao/zola-pickles/blob/master/screenshot.png?raw=true)
+![pickles screenshot](https://github.com/lukehsiao/zola-pickles/blob/main/screenshot.png?raw=true)
 
 ## Installation
 First download this theme to your `themes` directory:
@@ -16,8 +30,7 @@ and then enable it in your `config.toml`:
 theme = "zola-pickles"
 ```
 
-The theme requires putting the posts in the root of the `content` folder and to
-enable pagination, for example in `content/_index.md`:
+The theme requires putting the posts in the root of the `content` folder and to enable pagination, for example in `content/_index.md`.
 
 ```
 +++
@@ -51,14 +64,11 @@ instantpage_enable = false
 
 A full example configuration is included in config.toml.
 
-Note how pickles also expects `title` and `description` to also be set in the
-Zola configuration.
+Note how pickles also expects `title` and `description` to also be set in the Zola configuration.
 
 ### KaTeX math formula support
 
-This theme contains math formula support using [KaTeX](https://katex.org/),
-which can be enabled by setting `katex_enable = true` in the `extra` section
-of `config.toml`.
+This theme contains math formula support using [KaTeX](https://katex.org/), which can be enabled by setting `katex_enable = true` in the `extra` section of `config.toml`.
 
 After enabling this extension, the `katex` short code can be used in documents:
 * `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
@@ -66,7 +76,7 @@ After enabling this extension, the `katex` short code can be used in documents:
 
 ### Figure Shortcode
 
-This theme also includes a figure shortcode for convenience in captioning figures.
+The figure shortcode is convenient for captioning figures.
 
 ```
 {% figure(link="https://www.example.com/", src="https://www.example.com/img.jpeg", alt="sample alt text") %}
@@ -76,7 +86,7 @@ Your caption here.
 
 ### Table Shortcode
 
-This theme also includes a table shortcode for convenience in making mobile-friendly tables.
+The table shortcode is convenient for making mobile-friendly tables (centered with overflow scrollbar).
 
 ```
 {% table() %}
@@ -86,7 +96,6 @@ This theme also includes a table shortcode for convenience in making mobile-frie
 | Bananas      |  1.89 |          6 |
 {% end %}
 ```
-This wraps the table in a div and centers it.
 
 ### Fontawesome
 
@@ -94,13 +103,9 @@ This theme includes fontawesome, so that fontawesome icons can be directly used.
 
 ### Instant.page
 
-The theme contains instant.page prefetching. This can be enabled by setting
-`instantpage_enable = true` in the `extra` section of `config.toml`.
+The theme contains instant.page prefetching. This can be enabled by setting `instantpage_enable = true` in the `extra` section of `config.toml`.
 
 ## Showing article summaries
 
-By default, the theme will use the first 280 characters of your post as a
-summary, if a proper [page
-summary](https://www.getzola.org/documentation/content/page/#summary) using
-`<!-- more -->` is not provided. For more sensible summaries, we recommend using
-the manual more indicator.
+By default, the theme will use the first 280 characters of your post as a summary, if a proper [page summary](https://www.getzola.org/documentation/content/page/#summary) using `<!-- more -->` is not provided.
+For more sensible summaries, we recommend using the manual more indicator.
