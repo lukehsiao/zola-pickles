@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  color: $color-text;
+  color: $fg_0;
   font-size: 1.8rem;
   font-family: $BodyFont;
   line-height: 1.50;
@@ -60,10 +60,10 @@ summary {
 }
 
 a {
-  color: $link-color;
+  color: $blue;
   text-decoration: none;
   &:hover {
-    color: $link-hover;
+    color: $br_blue;
   }
 }
 
@@ -97,7 +97,6 @@ pre {
   display: block;
   padding: 12px;
   border-radius: 3px;
-  background-color: #f8f8f8;
   font-size: 1.2rem;
   word-wrap: break-word;
   overflow: auto;
@@ -120,8 +119,8 @@ table > :is(thead, tbody) > tr > :is(th, td) {
 }
 
 table > thead > tr > :is(th, td) {
-    background-color: lab(82% 0 0);
-    color: lab(16% 0 0);
+    background-color: $bg_2;
+    color: $fg_1;
     border-top: 2px solid;
     border-bottom: 1px solid;
 }
@@ -131,16 +130,16 @@ table > tbody > tr:last-child > :is(th, td) {
 }
 
 table tr {
-    background-color: lab(100% 0 0);
+    background-color: $bg_0;
     margin: 0;
 }
 
 table tr:nth-child(2n) {
-    background-color: lab(93% 0 0);
+    background-color: $bg_1;
 }
 
 del {
-  color: #999;
+  color: $dim_0;
 }
 
 blockquote {

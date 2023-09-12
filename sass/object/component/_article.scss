@@ -4,9 +4,9 @@
   &__title {
     font-size: 2.8rem;
     & a {
-      color: $color-title;
+      color: $fg_1;
       &:hover {
-        color: $link-hover;
+        color: $br_blue;
       }
     }
     margin-bottom: 0;
@@ -15,12 +15,12 @@
     font-size: 1.4rem;
     line-height: 1;
     font-style: italic;
-    color: $color-meta;
+    color: $dim_0;
     margin-top: 0;
   }
   &__summary {
     font-size: 1.4rem;
-    color: $color-text;
+    color: $fg_0;
     line-height: 1.5;
     & p {
       margin: 0;

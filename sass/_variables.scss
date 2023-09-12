@@ -1,9 +1,30 @@
-$bg-color: #fff;
-$color-text: #444;
-$color-title: #111;
-$color-meta: #888;
-$link-color: #337ab7;
-$link-hover: #175081;
+// Selenized White
+// Ref: https://github.com/jan-warchol/selenized/blob/master/the-values.md#selenized-white
+$bg_0: lab(100% 0 0);
+$bg_1: lab(93% 0 0);
+$bg_2: lab(82% 0 0);
+$dim_0: lab(56% 0 0);
+$fg_0: lab(30% 0 0);
+$fg_1: lab(16% 0 0);
+
+$red: lab(40% 88 56);
+$green: lab(54% -53 77);
+$yellow: lab(65% 8 95);
+$blue: lab(40% 0 -80);
+$magenta: lab(50% 77 -21);
+$cyan: lab(61% -56 -6);
+$orange: lab(51% 52 70);
+$violet: lab(45% 42 -63);
+
+$br_red: lab(33% 88 56);
+$br_green: lab(47% -53 77);
+$br_yellow: lab(58% 8 95);
+$br_blue: lab(33% 0 -80);
+$br_magenta: lab(43% 77 -21);
+$br_cyan: lab(54% -56 -6);
+$br_orange: lab(44% 52 70);
+$br_violet: lab(38% 42 -63);
+
 $fig-height: 45em;
 
 $BodyFont: 'Atkinson Hyperlegible', sans-serif;
