@@ -109,20 +109,34 @@ code {
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  font-size: 1.8rem;
+    margin: 15px 0;
+    border-collapse: collapse;
+    width: auto;
+    padding: 0;
 }
 
-th,
-td {
-  padding: 8px;
-  border: 1px solid #eee;
+table > :is(thead, tbody) > tr > :is(th, td) {
+    padding: 2px 4px;
 }
 
-th {
-  background-color: #fafafa;
-  font-weight: normal;
+table > thead > tr > :is(th, td) {
+    background-color: lab(82% 0 0);
+    color: lab(16% 0 0);
+    border-top: 2px solid;
+    border-bottom: 1px solid;
+}
+
+table > tbody > tr:last-child > :is(th, td) {
+    border-bottom: 2px solid;
+}
+
+table tr {
+    background-color: lab(100% 0 0);
+    margin: 0;
+}
+
+table tr:nth-child(2n) {
+    background-color: lab(93% 0 0);
 }
 
 del {

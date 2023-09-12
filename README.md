@@ -66,13 +66,27 @@ After enabling this extension, the `katex` short code can be used in documents:
 
 ### Figure Shortcode
 
-This them also includes a figure shortcode for convenience in captioning figures.
+This theme also includes a figure shortcode for convenience in captioning figures.
 
 ```
 {% figure(link="https://www.example.com/", src="https://www.example.com/img.jpeg", alt="sample alt text") %}
 Your caption here.
 {% end %}
 ```
+
+### Table Shortcode
+
+This theme also includes a table shortcode for convenience in making mobile-friendly tables.
+
+```
+{% table() %}
+| Item         | Price | # In stock |
+| :----------- | ----: | ---------: |
+| Juicy Apples |  1.99 |        739 |
+| Bananas      |  1.89 |          6 |
+{% end %}
+```
+This wraps the table in a div and centers it.
 
 ### Fontawesome
 
