@@ -1,3 +1,19 @@
+## [0.3.1] - 2023-09-18
+
+### Documentation
+- (CHANGELOG) Remove unused link to unreleased
+- (README) Give the README a little more styling
+
+### Features
+- Use page's summary as meta description
+
+### Styling
+- Make headers and figure captions darker
+- Make blockquotes lighter
+- Increase size of subtitle and post meta
+
+[0.3.1]: https://github.com/lukehsiao/zola-pickles/compare/v0.3.1...v0.3.1
+
 ## [0.3.0] - 2023-09-12
 
 ### Bug Fixes
