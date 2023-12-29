@@ -63,6 +63,7 @@ summary {
 a {
   color: $blue;
   text-decoration: none;
+
   &:hover {
     color: $br_blue;
   }
@@ -109,34 +110,34 @@ code {
 }
 
 table {
-    margin: 15px 0;
-    border-collapse: collapse;
-    width: auto;
-    padding: 0;
+  margin: 15px 0;
+  border-collapse: collapse;
+  width: auto;
+  padding: 0;
 }
 
-table > :is(thead, tbody) > tr > :is(th, td) {
-    padding: 2px 4px;
+table> :is(thead, tbody)>tr> :is(th, td) {
+  padding: 2px 4px;
 }
 
-table > thead > tr > :is(th, td) {
-    background-color: $bg_2;
-    color: $fg_1;
-    border-top: 2px solid;
-    border-bottom: 1px solid;
+table>thead>tr> :is(th, td) {
+  background-color: $bg_2;
+  color: $fg_1;
+  border-top: 2px solid;
+  border-bottom: 1px solid;
 }
 
-table > tbody > tr:last-child > :is(th, td) {
-    border-bottom: 2px solid;
+table>tbody>tr:last-child> :is(th, td) {
+  border-bottom: 2px solid;
 }
 
 table tr {
-    background-color: $bg_0;
-    margin: 0;
+  background-color: $bg_0;
+  margin: 0;
 }
 
 table tr:nth-child(2n) {
-    background-color: $bg_1;
+  background-color: $bg_1;
 }
 
 del {
@@ -147,15 +148,27 @@ blockquote {
   margin: 0;
   padding: 8px 12px;
   border-left: 3px solid #ccc;
+
   & * {
     margin: 0;
   }
+
   color: $dim_0;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+.toc {
+  border-radius: 15px;
+  border: 1px solid $bg-2;
+  padding: 1rem 1.5rem;
+}
+
+.toc ul {
+  margin: 0;
 }
 
 @import "footer";
