@@ -15,10 +15,10 @@ _update_changelog version:
 	    exit
 	fi
 
-	git-cliff --unreleased --tag {{version}} --prepend CHANGELOG.md
+	git-cliff --bump --unreleased --prepend CHANGELOG.md
 	${EDITOR:-vi} CHANGELOG.md
 	git commit CHANGELOG.md -m "docs(CHANGELOG): add entry for {{version}}"
-	
+
 # Increment the version
 _incr_version version: (_update_changelog version)
 	# no-op
@@ -26,10 +26,9 @@ _incr_version version: (_update_changelog version)
 # Get the changelog and git stats for the release
 _tlog describe version:
 	# Format git-cliff output friendly for the tag
-	@git cliff --unreleased --tag {{version}} | sd "(^## .*\n\s+|^See the.*|^\[.*|^\s*$|^###\s)" ""
+	@git cliff -c minimal --strip all --unreleased --tag {{version}} | sd "(^## .*\n\s+|^See the.*|^\[.*|^\s*$|^###\s)" ""
 	@echo "$ git stats -r {{describe}}..{{version}}"
 	@git stats -r {{describe}}..HEAD
-	
 
 # Target can be ["major", "minor", "patch", or a version]
 release target:
