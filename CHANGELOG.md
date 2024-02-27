@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.3.3](https://github.com/lukehsiao/zola-pickles/compare/v0.3.2..v0.3.3) - 2024-02-27
+
+### Refactor
+
+- switch to cloudflare pages - ([9416dc8](https://github.com/lukehsiao/zola-pickles/commit/9416dc8beb8cf9e60f23443281c55fe57ed17ae0)) - Luke Hsiao
+
+---
 ## [0.3.2](https://github.com/lukehsiao/zola-pickles/compare/v0.3.1..v0.3.2) - 2024-01-19
 
 ### Documentation
@@ -138,4 +145,3 @@ All notable changes to this project will be documented in this file. See [conven
 ### Styling
 
 - switch to Source Sans Pro for main font - ([363313d](https://github.com/lukehsiao/zola-pickles/commit/363313d983fa4f00d550bf9339da9d8c12dde996)) - Luke Hsiao
-
