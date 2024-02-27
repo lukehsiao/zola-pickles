@@ -1,5 +1,5 @@
 # The base URL of the site; the only required configuration variable.
-base_url = "https://effervescent-chebakia-056748.netlify.app"
+base_url = "https://zola-pickles.pages.dev"
 
 # The site title and description; used in feeds by default.
 title = "Example Site"
