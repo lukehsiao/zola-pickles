@@ -12,12 +12,12 @@ default_language = "en"
 # theme = ""
 
 # When set to "true", a feed is automatically generated.
-generate_feed = true
+generate_feeds = true
 
 # The filename to use for the feed. Used as the template filename, too.
 # Defaults to "atom.xml", which has a built-in template that renders an Atom 1.0 feed.
 # There is also a built-in template "rss.xml" that renders an RSS 2.0 feed.
-feed_filename = "atom.xml"
+feed_filenames = ["atom.xml"]
 
 # The number of articles to include in the feed. All items are included if
 # this limit is not set (the default).
@@ -66,9 +66,6 @@ minify_html = false
 # Example:
 #     ignored_content = ["*.{graphml,xlsx}", "temp.*"]
 ignored_content = []
-
-# A list of directories used to search for additional `.sublime-syntax` files.
-extra_syntaxes = []
 
 # You can override the default output directory `public` by setting an another value.
 # output_dir = "docs"
