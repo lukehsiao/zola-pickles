@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.3.4](https://github.com/lukehsiao/zola-pickles/compare/v0.3.3..v0.3.4) - 2024-08-06
+
+### Bug Fixes
+
+- do not override the list-style of nested ol/ul - ([c5097dc](https://github.com/lukehsiao/zola-pickles/commit/c5097dc08c8672506e5c19181ab241f98260b0b4)) - Luke Hsiao
+
+### Features
+
+- show up to h4 in toc - ([83d2ba6](https://github.com/lukehsiao/zola-pickles/commit/83d2ba6427069ae40c65412d629800912449719a)) - Luke Hsiao
+
+### Styling
+
+- give toc a little bit of margin - ([80aeb88](https://github.com/lukehsiao/zola-pickles/commit/80aeb88300580da2dbca76e98ce5e7bc3b61d14f)) - Luke Hsiao
+
+---
 ## [0.3.3](https://github.com/lukehsiao/zola-pickles/compare/v0.3.2..v0.3.3) - 2024-02-27
 
 ### Refactor
