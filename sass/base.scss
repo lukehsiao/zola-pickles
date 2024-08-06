@@ -70,14 +70,18 @@ a {
 }
 
 ul {
-  & li {
-    list-style: disc;
+  list-style: disc;
+
+  ol {
+    list-style: decimal;
   }
 }
 
 ol {
-  & li {
-    list-style: decimal;
+  list-style: decimal;
+
+  ul {
+    list-style: disc;
   }
 }
 
