@@ -9,18 +9,18 @@
 
 {% block description -%}
 {% if page.summary -%}
-<meta name="description" content="{{ page.summary | linebreaksbr | replace(from=" <br>", to=" ") | striptags | trim |
+<meta name="description" content="{{ page.summary | linebreaksbr | replace(from="<br>", to=" ") | striptags | trim |
 safe }}">
-<meta property="og:description" content="{{ page.summary | linebreaksbr | replace(from=" <br>", to=" ") | striptags |
+<meta property="og:description" content="{{ page.summary | linebreaksbr | replace(from="<br>", to=" ") | striptags |
 trim | safe }}">
-<meta name="twitter:description" content="{{ page.summary | linebreaksbr | replace(from=" <br>", to=" ") | striptags |
+<meta name="twitter:description" content="{{ page.summary | linebreaksbr | replace(from="<br>", to=" ") | striptags |
 truncate(length=200) | trim | safe }}">
 {% else %}
-<meta name="description" content="{{ page.content | linebreaksbr | replace(from=" <br>", to=" ") | striptags |
+<meta name="description" content="{{ page.content | linebreaksbr | replace(from="<br>", to=" ") | striptags |
 truncate(length=280) | trim | safe }}">
-<meta property="og:description" content="{{ page.content | linebreaksbr | replace(from=" <br>", to=" ") | striptags |
+<meta property="og:description" content="{{ page.content | linebreaksbr | replace(from="<br>", to=" ") | striptags |
 truncate(length=280) | trim | safe }}">
-<meta name="twitter:description" content="{{ page.content | linebreaksbr | replace(from=" <br>", to=" ") | striptags |
+<meta name="twitter:description" content="{{ page.content | linebreaksbr | replace(from="<br>", to=" ") | striptags |
 truncate(length=280) | trim | safe }}">
 {%- endif %}
 {%- endblock description %}
