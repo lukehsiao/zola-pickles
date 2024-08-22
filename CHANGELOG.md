@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 ---
+## [0.3.5](https://github.com/lukehsiao/zola-pickles/compare/v0.3.4..v0.3.5) - 2024-08-22
+
+### Bug Fixes
+
+- preserve the spaces in the meta description - ([891a2ce](https://github.com/lukehsiao/zola-pickles/commit/891a2ce6b09c1e774aad225f5613189ef05f96da)) - Luke Hsiao
+
+---
 ## [0.3.4](https://github.com/lukehsiao/zola-pickles/compare/v0.3.3..v0.3.4) - 2024-08-06
 
 ### Bug Fixes
