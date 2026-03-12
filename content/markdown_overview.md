@@ -69,4 +69,6 @@ Spirit (CC BY-SA 2.0)")
 
 ## An iframe
 
-{{ youtube(id="dQw4w9WgXcQ") }}
+{% youtube(id="dQw4w9WgXcQ") %}
+A youtube video.
+{% end %}

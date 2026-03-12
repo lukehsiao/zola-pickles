@@ -64,4 +64,6 @@ fn main() {
 
 ## An iframe
 
-{{ youtube(id="dQw4w9WgXcQ") }}
+{% youtube(id="dQw4w9WgXcQ") %}
+A youtube video.
+{% end %}
