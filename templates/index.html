@@ -58,7 +58,13 @@
         {% if config.extra.katex_enable -%}
         <link rel="stylesheet" href="{{ get_url(path="css/katex.min.css") }}">
         <script defer src="{{ get_url(path="js/katex.min.js") }}"></script>
-        <script defer src="{{ get_url(path="js/mathtex-script-type.min.js") }}"></script>
+        <script defer src="{{ get_url(path="js/auto-render.min.js") }}"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', inline: true}
+                ]
+            });"></script>
         {%- endif %}
 
         {% block extra_head -%}
@@ -139,4 +145,3 @@
       {%- endif %}
     </body>
 </html>
-

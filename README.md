@@ -70,10 +70,6 @@ Note how pickles also expects `title` and `description` to also be set in the Zo
 
 This theme contains math formula support using [KaTeX](https://katex.org/), which can be enabled by setting `katex_enable = true` in the `extra` section of `config.toml`.
 
-After enabling this extension, the `katex` short code can be used in documents:
-* `{% katex(block=true) %}\KaTeX{% end %}` to typeset a block of math formulas,
-  similar to `$$...$$` in LaTeX
-
 ### Figure Shortcode
 
 The figure shortcode is convenient for captioning figures.
