@@ -72,3 +72,9 @@ Spirit (CC BY-SA 2.0)")
 {% youtube(id="dQw4w9WgXcQ") %}
 A youtube video.
 {% end %}
+
+## A math expression
+
+$$
+a^2 + b^2 = c^2
+$$
