@@ -1,2 +1,5 @@
 ### Zola ###
 /public/
+
+### Node ###
+node_modules/
