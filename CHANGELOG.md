@@ -1,6 +1,27 @@
 # Changelog
 
+## 0.3.6
+
+### Patch Changes
+
+- [`f70ee0f`](https://github.com/lukehsiao/zola-pickles/commit/f70ee0fe714c5a8d72f360c3545137f811a12b20) - **build**: switch to `changesets` for managing releases.
+
+- [`26a6450`](https://github.com/lukehsiao/zola-pickles/commit/26a645019380c68a333dcfefc17c4d51cdbbde64) - **feature**: the KaTeX assets in the page head are now wrapped in a `katex` template block, so sites can replace the default math setup with a small template override instead of copying the whole base template.
+
+  For example, switching to KaTeX's [auto-render extension](https://katex.org/docs/autorender.html) to typeset `$$...$$` directly is a short `templates/index.html` in your site; see the README recipe.
+  To support exactly that, the theme now ships `auto-render.min.js`, version-locked to the bundled KaTeX; the file lands in every site's output (about 3.5 kB) whether or not the block is overridden.
+  Default rendering behavior is unchanged.
+
+<pre>
+$ git-stats v0.3.5..v0.3.6
+Author           Commits  Changed Files  Insertions  Deletions  Net Δ
+Luke Hsiao            11             93       +1133       -199   +934
+dependabot[bot]        2              2          +2         -2      0
+Total                 13             95       +1135       -201   +934
+</pre>
+
 ---
+
 ## [0.3.5](https://github.com/lukehsiao/zola-pickles/compare/v0.3.4..v0.3.5) - 2024-08-22
 
 ### Bug Fixes
@@ -8,6 +29,7 @@
 - preserve the spaces in the meta description - ([891a2ce](https://github.com/lukehsiao/zola-pickles/commit/891a2ce6b09c1e774aad225f5613189ef05f96da)) - Luke Hsiao
 
 ---
+
 ## [0.3.4](https://github.com/lukehsiao/zola-pickles/compare/v0.3.3..v0.3.4) - 2024-08-06
 
 ### Bug Fixes
@@ -23,6 +45,7 @@
 - give toc a little bit of margin - ([80aeb88](https://github.com/lukehsiao/zola-pickles/commit/80aeb88300580da2dbca76e98ce5e7bc3b61d14f)) - Luke Hsiao
 
 ---
+
 ## [0.3.3](https://github.com/lukehsiao/zola-pickles/compare/v0.3.2..v0.3.3) - 2024-02-27
 
 ### Refactor
@@ -30,6 +53,7 @@
 - switch to cloudflare pages - ([9416dc8](https://github.com/lukehsiao/zola-pickles/commit/9416dc8beb8cf9e60f23443281c55fe57ed17ae0)) - Luke Hsiao
 
 ---
+
 ## [0.3.2](https://github.com/lukehsiao/zola-pickles/compare/v0.3.1..v0.3.2) - 2024-01-19
 
 ### Documentation
@@ -45,6 +69,7 @@
 - reduce margin for figure captions - ([40c555b](https://github.com/lukehsiao/zola-pickles/commit/40c555b2dbefcd09e933f05068f81c4c80bdea56)) - Luke Hsiao
 
 ---
+
 ## [0.3.1](https://github.com/lukehsiao/zola-pickles/compare/v0.3.0..v0.3.1) - 2023-09-18
 
 ### Documentation
@@ -64,6 +89,7 @@
 - increase size of subtitle and post meta - ([26b353e](https://github.com/lukehsiao/zola-pickles/commit/26b353e6d64098503dcfa26fa9e266fd9131f499)) - Luke Hsiao
 
 ---
+
 ## [0.3.0](https://github.com/lukehsiao/zola-pickles/compare/v0.2.0..v0.3.0) - 2023-09-12
 
 ### Bug Fixes
@@ -90,9 +116,10 @@
 ### Styling
 
 - **(templates/index)** remove unnecessary newline - ([994cf84](https://github.com/lukehsiao/zola-pickles/commit/994cf84e5a05093abd894e7eaeaf5f02e3b3535c)) - Luke Hsiao
--  [**breaking**] adopt `selenized-white` color scheme and naming - ([ef97a63](https://github.com/lukehsiao/zola-pickles/commit/ef97a63a572947103ee674ac032c1795b5767573)) - Luke Hsiao
+- [**breaking**] adopt `selenized-white` color scheme and naming - ([ef97a63](https://github.com/lukehsiao/zola-pickles/commit/ef97a63a572947103ee674ac032c1795b5767573)) - Luke Hsiao
 
 ---
+
 ## [0.2.0](https://github.com/lukehsiao/zola-pickles/compare/v0.1.1..v0.2.0) - 2021-01-10
 
 ### Bug Fixes
@@ -104,6 +131,7 @@
 - remove polish macro, use built-in emojify support - ([9e7ea9e](https://github.com/lukehsiao/zola-pickles/commit/9e7ea9e9a0e567c28e0fd81082ca81ca2cae24d7)) - Luke Hsiao
 
 ---
+
 ## [0.1.1](https://github.com/lukehsiao/zola-pickles/compare/v0.1.0..v0.1.1) - 2020-07-08
 
 ### Bug Fixes
@@ -148,6 +176,7 @@
 - move zola-anchors to right side - ([ef3dbe2](https://github.com/lukehsiao/zola-pickles/commit/ef3dbe267d6bfb0ae1dc1f67c6e5562929598195)) - Luke Hsiao
 
 ---
+
 ## [0.1.0] - 2020-02-07
 
 ### Documentation
