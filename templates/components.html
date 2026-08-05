@@ -1,0 +1,59 @@
+{% component post_title(page) -%}
+<header>
+    <h2 class="c-title c-article__title"><a href="{{ page.permalink }}">{{ page.title | markdown | striptags | safe }}</a></h2>
+    <p class="c-article__meta">
+        <time datetime="{{ page.date | date(format="%F") | safe }}">
+            {{ page.date | date(format="%F") }}
+        </time>
+        {% if page.extra.author -%}
+          by {{ page.extra.author }}
+        {%- endif %}
+        {{ " - " }}({{ page.reading_time }} min read)
+    </p>
+</header>
+{%- endcomponent post_title %}
+
+{% component figure(src: string, alt: string = "", link: string = "", title: string = "", border = 0, class: string = "") -%}
+<figure{% if class %} class="{{ class }}"{% endif %}>
+  <a href="{{ link if link else src }}">
+    <img src="{{ src }}"{% if alt %} alt="{{ alt }}"{% endif %}{% if border %} style="border:{{ border }}px solid black"{% endif %} />
+  </a>
+  <figcaption>
+    {%- if title %}<h4>{{ title }}</h4>{% endif %}
+    {{ body | markdown | safe }}
+  </figcaption>
+</figure>
+{%- endcomponent figure %}
+
+{% component youtube(id: string, title: string = "", class: string = "", autoplay = false) -%}
+<figure{% if class %} class="{{ class }}"{% endif %}>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/{{ id }}{% if autoplay %}?autoplay=1{% endif %}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="youtube video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+  <figcaption>
+    {%- if title %}<h4>{{ title }}</h4>{% endif %}
+    {{ body | markdown | safe }}
+  </figcaption>
+</figure>
+{%- endcomponent youtube %}
+
+{% component vimeo(id: string) -%}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/{{ id }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+{%- endcomponent vimeo %}
+
+{% component katex(block = false) -%}
+<script type="math/tex{% if block %};mode=display{% endif %}">{{ body | trim | safe }}</script>
+{%- endcomponent katex %}
+
+{# The blank lines around the body are load-bearing: they close the opening HTML
+   block so the Markdown renderer parses the table inside the div as a table
+   rather than as literal text. `safe` keeps the Markdown source unescaped. #}
+{% component table() -%}
+<div align="center" style="overflow-x:auto;">
+
+{{ body | safe }}
+
+</div>
+{%- endcomponent table %}

@@ -16,13 +16,13 @@ in culpa qui officia deserunt mollit anim id est laborum.
 
 <!-- more -->
 
-{% figure(link="https://en.wikipedia.org/wiki/Cable_lacing#/media/File:Cable_lacing_close-up.jpg", src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Cable_lacing_close-up.jpg", alt="Laced wiring harness") %}
+{% <figure link="https://en.wikipedia.org/wiki/Cable_lacing#/media/File:Cable_lacing_close-up.jpg" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Cable_lacing_close-up.jpg" alt="Laced wiring harness"> %}
 Cable lacing example from Wikipedia.
-{% end %}
+{% </figure> %}
 
-{% katex(block=true) %}
+{% <katex block={true}> %}
 \KaTeX
-{% end %}
+{% </katex> %}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
