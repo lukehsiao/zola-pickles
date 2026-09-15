@@ -1,0 +1,24 @@
+@import "../../variables";
+
+// `.l-header` is positioned and shares its column with `.l-main`, so the glyph
+// corners on the text column at every width, and the title stays centred on the
+// page instead of being shoved aside.
+.p-search {
+  position: absolute;
+  top: 20px; // matches the header's vertical padding
+  right: 0;
+}
+
+// Out of flow, the trigger no longer pushes the title around, so hold back
+// enough of the title's width for the 40px glyph in the column's corner. A
+// title too long for what is left wraps, which is the graceful failure; the
+// sibling combinator scopes this to sites that render search.
+.p-search ~ .p-title {
+  padding: 0 48px;
+}
+
+// A modal dialog still lets the page behind it scroll, which is disorienting
+// while results are on screen.
+.is-search-open {
+  overflow: hidden;
+}

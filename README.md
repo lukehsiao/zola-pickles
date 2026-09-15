@@ -63,6 +63,9 @@ katex_enable = false
 
 # See below
 instantpage_enable = false
+
+# Only needed for search in a language other than English. See below.
+search_stemmers = []
 ```
 
 A full example configuration is included in zola.toml.
@@ -125,6 +128,54 @@ The table component is convenient for making mobile-friendly tables (centered wi
 | Bananas      |  1.89 |          6 |
 {% </table> %}
 ```
+
+### Search
+
+The theme renders a search dialog on top of Zola's built-in [search index](https://www.getzola.org/documentation/content/search/).
+There is no separate theme option: the UI appears when the index exists.
+
+```toml
+# Must stay in the root table, above the first `[table]` header. TOML assigns
+# a bare key to whichever table precedes it, so a line below `[slugify]` or
+# `[search]` silently does nothing.
+build_search_index = true
+
+[search]
+# The theme reads the elasticlunr JavaScript index, which is Zola's default.
+# The `fuse_*` and `*_json` formats will not work with it.
+index_format = "elasticlunr_javascript"
+```
+
+The trigger is a single magnifying glass in the top right of the content column, deliberately quiet so it does not compete with the site title, and it stays there at every width.
+`Ctrl`/`Cmd`+`K` or `/` opens it, `Esc` closes it, the arrow keys walk the results, and `Enter` opens the highlighted one.
+Results update as you type, with the matched words marked in the title and in an excerpt of the page.
+
+Neither elasticlunr nor the index is requested until you hover, focus, or open the search control, so readers who never search download nothing but the dialog's own JavaScript: 14 kB unminified, about 4.5 kB over the wire once the server compresses it.
+The index itself holds the full text of every page and grows accordingly.
+On a large site, `truncate_content_length` in `[search]` cuts it down, but understand what you are buying: Zola truncates each page before indexing it, so words past the cutoff are not merely missing from the excerpt, they are missing from the index and can never be found.
+
+#### Languages other than English
+
+Zola indexes each language separately, and `build_search_index` is read per language, so search follows whichever languages you turn it on for:
+
+```toml
+build_search_index = true # the default language
+
+[languages.fr]
+build_search_index = true
+```
+
+A non-English index is built with that language's analysis pipeline, and elasticlunr refuses to load an index whose pipeline functions it does not know.
+Such a site has to supply the matching stemmer files, in dependency order:
+
+```toml
+[extra]
+search_stemmers = ["js/lunr.stemmer.support.js", "js/lunr.fr.js"]
+```
+
+Take those files from [weixsong/lunr-languages](https://github.com/weixsong/lunr-languages), the fork Zola's own documentation points at, and drop them in your site's `static/js`.
+The `lunr-languages` package on npm is a different project and will not work here: its language files call `lunr.generateStopWordFilter`, which elasticlunr does not implement, so they throw part way through and leave the stopword filter unregistered.
+The theme loads whatever you list after elasticlunr and before the index is parsed, which is the window those files need.
 
 ### Fontawesome
 

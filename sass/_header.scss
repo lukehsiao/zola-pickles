@@ -1,5 +1,12 @@
 .l-header {
   display: block;
+  // The same column `.l-main` uses, so the title and the search trigger line up
+  // with the articles below instead of with the window.
+  width: 96%;
+  max-width: $column-width;
+  margin: 0 auto;
   padding: 20px 0;
   text-align: center;
+  // The box the search trigger corners itself against.
+  position: relative;
 }

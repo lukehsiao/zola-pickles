@@ -1,0 +1,250 @@
+@import "../../variables";
+
+.c-search {
+  // The dialog element is only a positioning shell; `__panel` is the visible
+  // surface, which keeps backdrop clicks (they land on the shell) separate
+  // from clicks inside the panel.
+  width: 92%;
+  max-width: 560px;
+  margin: 10vh auto 0; // anchored high so results grow into the reader's gaze
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: $fg_0;
+  font-family: $BodyFont;
+  text-align: left;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  &[open] {
+    animation: c-search-open 120ms ease-out;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow: hidden;
+    border: 1px solid $bg_2;
+    border-radius: 12px;
+    background-color: $bg_0;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+
+  &__trigger {
+    // No border or fill: at rest this should read as one quiet glyph in the
+    // corner, not as a control competing with the site title.
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    // 40px keeps a comfortable tap target under a 16px glyph.
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background-color: transparent;
+    color: $dim_0;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 120ms ease, background-color 120ms ease;
+
+    &:hover {
+      background-color: $bg_1;
+      color: $fg_0;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $blue;
+      outline-offset: 2px;
+    }
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid $bg_2;
+
+    // The input's own outline is suppressed below, so the field row carries the
+    // focus indicator for it.
+    &:focus-within {
+      border-bottom-color: $blue;
+      box-shadow: inset 0 -2px 0 0 $blue;
+    }
+  }
+
+  &__field-icon {
+    color: $dim_0;
+  }
+
+  &__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: $fg_0;
+    font-family: $BodyFont;
+    // Anything under 16px makes iOS Safari zoom the page on focus.
+    font-size: 1.8rem;
+
+    &:focus {
+      outline: none; // `.c-search__field:focus-within` shows the focus instead
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none; // Escape and the close button cover this
+    }
+  }
+
+  &__close {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    border: 1px solid $bg_2;
+    border-radius: 6px;
+    background-color: $bg_1;
+    color: $dim_0;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $dim_0;
+      color: $fg_0;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $blue;
+      outline-offset: 2px;
+    }
+
+    // Nested so the selector outweighs FontAwesome's `.fas { display: inline-block }`,
+    // which base.scss imports after this file.
+    .c-search__close-icon {
+      font-size: 1.6rem;
+
+      @include mq-up(lmd) {
+        display: none; // keyboards get the shortcut hint instead
+      }
+    }
+  }
+
+  &__close-key {
+    font-family: $BodyFont;
+
+    @include mq-down(md) {
+      display: none;
+    }
+  }
+
+  &__list {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 8px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__item {
+    margin: 0;
+    list-style: none;
+  }
+
+  &__hit {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: $fg_0;
+
+    &[aria-selected="true"],
+    &:hover {
+      background-color: $bg_1;
+      color: $fg_0; // links brighten on hover site-wide; the row highlight says it here
+    }
+
+    mark {
+      border-radius: 2px;
+      background-color: color-mix(in srgb, $yellow 30%, transparent);
+      color: inherit;
+    }
+  }
+
+  &__hit-title {
+    display: block;
+    color: $fg_1;
+    font-family: $HeaderFont;
+    font-size: 1.8rem;
+  }
+
+  &__hit-excerpt {
+    // Two lines is enough to judge a hit; more turns the list into a wall.
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 2px;
+    color: $dim_0;
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+
+  &__status {
+    margin: 0;
+    padding: 10px 16px;
+    border-top: 1px solid $bg_2;
+    color: $dim_0;
+    font-size: 1.4rem;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  @include mq-down(md) {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+
+    &__panel {
+      height: 100%;
+      max-height: none;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+@keyframes c-search-open {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-search[open] {
+    animation: none;
+  }
+
+  .c-search__trigger {
+    transition: none;
+  }
+}
