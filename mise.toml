@@ -1,3 +1,9 @@
 [tools]
+# Zola renders the demo site and Pagefind indexes the rendered HTML, which is
+# what build.sh runs in that order. Pagefind has no mise registry entry, so it
+# comes straight from its GitHub releases.
+zola = "latest"
+"github:pagefind/pagefind" = "latest"
+
 node = "lts"
 pnpm = "latest"

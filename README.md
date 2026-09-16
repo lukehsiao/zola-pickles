@@ -43,6 +43,8 @@ insert_anchor_links = "right"
 +++
 ```
 
+To preview the theme by itself, run `./build.sh && zola serve` from the theme's own directory: the repository doubles as the demo site, and the build step is what gives the preview a search index.
+
 ## Reference guides
 
 ## Configuration Options
@@ -64,8 +66,8 @@ katex_enable = false
 # See below
 instantpage_enable = false
 
-# Only needed for search in a language other than English. See below.
-search_stemmers = []
+# Pagefind site search; see below. Requires a build step.
+search_enable = false
 ```
 
 A full example configuration is included in zola.toml.
@@ -131,51 +133,32 @@ The table component is convenient for making mobile-friendly tables (centered wi
 
 ### Search
 
-The theme renders a search dialog on top of Zola's built-in [search index](https://www.getzola.org/documentation/content/search/).
-There is no separate theme option: the UI appears when the index exists.
+Search uses [Pagefind](https://pagefind.app/), enabled by setting `search_enable = true` in `[extra]`.
+Pagefind indexes the built HTML rather than the Markdown sources, so it runs after Zola, on every build:
 
-```toml
-# Must stay in the root table, above the first `[table]` header. TOML assigns
-# a bare key to whichever table precedes it, so a line below `[slugify]` or
-# `[search]` silently does nothing.
-build_search_index = true
-
-[search]
-# The theme reads the elasticlunr JavaScript index, which is Zola's default.
-# The `fuse_*` and `*_json` formats will not work with it.
-index_format = "elasticlunr_javascript"
+```bash
+zola build
+pagefind --site public
 ```
 
-The trigger is a single magnifying glass in the top right of the content column, deliberately quiet so it does not compete with the site title, and it stays there at every width.
-`Ctrl`/`Cmd`+`K` or `/` opens it, `Esc` closes it, the arrow keys walk the results, and `Enter` opens the highlighted one.
-Results update as you type, with the matched words marked in the title and in an excerpt of the page.
+`zola serve` never runs the second step, but it keeps only HTML in memory and serves everything else out of `public/`, so an index left there by an earlier build is served as-is: search works in a live-reload preview, answering from that snapshot rather than from the page you are editing.
+On a host that builds for you, the second step has to go in the build command: on Cloudflare Pages, for instance, the Zola preset runs `zola build`, and the command becomes `zola build && npm_config_yes=true npx pagefind --site public`.
+Pin that version (`pagefind@1.5.2`) if you want reproducible builds; the theme themes the UI through Pagefind's documented `--pf-*` properties, so tracking the latest release is also fine.
+Zola's own `build_search_index` plays no part in any of this and can stay off.
 
-Neither elasticlunr nor the index is requested until you hover, focus, or open the search control, so readers who never search download nothing but the dialog's own JavaScript: 14 kB unminified, about 4.5 kB over the wire once the server compresses it.
-The index itself holds the full text of every page and grows accordingly.
-On a large site, `truncate_content_length` in `[search]` cuts it down, but understand what you are buying: Zola truncates each page before indexing it, so words past the cutoff are not merely missing from the excerpt, they are missing from the index and can never be found.
+With search enabled, the header grows a search field under the subtitle, and clicking it, or pressing `Ctrl`/`Cmd`+`K`, opens Pagefind's modal over the blurred page.
+Both are Pagefind's own components, `<pagefind-modal-trigger>` and `<pagefind-modal>`, so the input, the results and their sub-results, focus trapping, keyboard navigation, screen reader announcements and translations all come from upstream; the theme contributes the placement and the colors and no JavaScript of its own.
+Because the field a reader clicks is itself a Pagefind component, the component bundle (around 210 kB, closer to 60 kB over the wire) is on every page view rather than on the first search; the index and the WebAssembly behind it are still only fetched once someone types.
+If the bundle is missing, because the site was built without the Pagefind step, the field simply never appears.
 
-#### Languages other than English
+Only posts are indexed: `page.html` marks its `<main>` with `data-pagefind-body`, and the listing, tag and category pages are left out because they only repeat the titles of the posts they link to.
+A site that wants something else in the index overrides the `main_attrs` block in its own template.
+The `webring` block is wrapped in `data-pagefind-ignore`, because posts from other people's blogs would otherwise answer for every post on yours.
 
-Zola indexes each language separately, and `build_search_index` is read per language, so search follows whichever languages you turn it on for:
-
-```toml
-build_search_index = true # the default language
-
-[languages.fr]
-build_search_index = true
-```
-
-A non-English index is built with that language's analysis pipeline, and elasticlunr refuses to load an index whose pipeline functions it does not know.
-Such a site has to supply the matching stemmer files, in dependency order:
-
-```toml
-[extra]
-search_stemmers = ["js/lunr.stemmer.support.js", "js/lunr.fr.js"]
-```
-
-Take those files from [weixsong/lunr-languages](https://github.com/weixsong/lunr-languages), the fork Zola's own documentation points at, and drop them in your site's `static/js`.
-The `lunr-languages` package on npm is a different project and will not work here: its language files call `lunr.generateStopWordFilter`, which elasticlunr does not implement, so they throw part way through and leave the stopword filter unregistered.
-The theme loads whatever you list after elasticlunr and before the index is parsed, which is the window those files need.
+Colors and sizes come from the `--pf-*` custom properties, set on `pagefind-modal` and `pagefind-modal-trigger` in `sass/object/component/_search.scss`.
+Pagefind's components reset inherited styles on themselves, so those properties are the whole theming surface; a site that overrides the theme's palette should override them too.
+A `search` template block wraps the head assets, so a site can load a different Pagefind build or a pinned copy of it without copying the whole base template.
+Those two files keep stable names and Pagefind writes them after Zola has run, so `cachebust=true` on them fails the build; give them a short cache lifetime rather than a year, so a bundle in someone's cache cannot outlive the index it knows how to read.
 
 ### Fontawesome
 

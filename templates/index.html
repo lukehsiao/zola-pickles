@@ -34,14 +34,11 @@
         {% if config.extra.instantpage_enable -%}
         <script src="{{ get_url(path="js/instantpage.min.js") }}" type="module" defer></script>
         {%- endif %}
-        {% if config.build_search_index -%}
-        <script src="{{ get_url(path="js/search.js") }}" defer></script>
-        {%- endif %}
         {%- endblock js %}
 
         {% block css -%}
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="{{ get_url(path="base.css") }}" />
+        <link rel="stylesheet" href="{{ get_url(path="base.css", cachebust=true) }}" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -64,6 +61,15 @@
         {%- endif %}
         {%- endblock katex %}
 
+        {% block search -%}
+        {% if config.extra.search_enable -%}
+        {#- Pagefind writes these after Zola has run, so there is nothing for
+            cachebust to hash at build time. -#}
+        <link rel="stylesheet" href="{{ get_url(path="pagefind/pagefind-component-ui.css") }}">
+        <script type="module" src="{{ get_url(path="pagefind/pagefind-component-ui.js") }}"></script>
+        {%- endif %}
+        {%- endblock search %}
+
         {% block extra_head -%}
         {%- endblock extra_head %}
 
@@ -72,44 +78,27 @@
         <a href="#main" class="skip-link p-screen-reader-text">Skip to content</a>
         {% block header -%}
         <header class="l-header">
-            {% if config.build_search_index -%}
-            {% set search_index_path = "search_index." ~ lang ~ ".js" %}
-            <search class="p-search">
-                <button type="button" id="js-search-trigger" class="c-search__trigger" aria-label="Search" title="Search (Ctrl/Cmd K)" aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </button>
-                <dialog id="js-search-dialog" class="c-search" aria-label="Search this site"
-                    data-search-lib="{{ get_url(path="elasticlunr.min.js") }}"
-                    data-search-index="{{ get_url(path=search_index_path) }}"
-                    data-search-base="{{ config.base_url }}"
-                    data-search-stemmers="{% for stemmer in config.extra.search_stemmers | default(value=[]) %}{{ get_url(path=stemmer) }} {% endfor %}">
-                    <div class="c-search__panel">
-                        <div class="c-search__field">
-                            <i class="fas fa-search c-search__field-icon" aria-hidden="true"></i>
-                            <input id="js-search-input" class="c-search__input" type="search" placeholder="Search" aria-label="Search"
-                                role="combobox" aria-expanded="false" aria-controls="js-search-results" aria-autocomplete="list"
-                                autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                            <button type="button" id="js-search-close" class="c-search__close" aria-label="Close search">
-                                <kbd class="c-search__close-key">Esc</kbd>
-                                <i class="fas fa-times c-search__close-icon" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                        <ul id="js-search-results" class="c-search__list" role="listbox" aria-label="Search results"></ul>
-                        <p id="js-search-status" class="c-search__status" role="status" aria-live="polite"></p>
-                    </div>
-                </dialog>
-            </search>
-            {%- endif %}
             <h1 class="c-title p-title"><a href="{{ config.base_url }}" class="p-title__link">{{ config.title }}</a></h1>
             {% if config.extra.subtitle -%}
             <p class="p-subtitle">
                 {{ config.extra.subtitle }}
             </p>
             {% endif -%}
+            {% if config.extra.search_enable -%}
+            {#- The config element has to precede the trigger and the modal in
+                the DOM, because whichever element upgrades first fixes the
+                bundle path for the instance. -#}
+            <pagefind-config bundle-path="{{ get_url(path="pagefind/", trailing_slash=true) }}"></pagefind-config>
+            <pagefind-modal-trigger class="p-search"></pagefind-modal-trigger>
+            {%- endif %}
         </header>
         {%- endblock header %}
 
-        <main id="main" class="l-main">
+        {#- Pagefind indexes only elements marked data-pagefind-body, and once
+            any page carries the mark, pages without it are left out entirely.
+            Listing pages repeat the titles of the posts they link to; the posts
+            themselves are the useful hits, so page.html fills this block in. -#}
+        <main id="main" class="l-main"{% block main_attrs %}{% endblock main_attrs %}>
             {% block content -%}
             {% for page in paginator.pages %}
             <article class="c-article p-list-article">
@@ -141,10 +130,20 @@
                 <span class="c-pagination__count p-pagination__count">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
             </nav>
             {%- endblock content %}
-            {% block webring -%}
-            {%- endblock webring %}
+            {#- The webring block carries other people's posts, and it sits
+                inside the indexed body, so a search for their words would
+                otherwise hit every post on this site. -#}
+            <div data-pagefind-ignore>
+                {% block webring -%}
+                {%- endblock webring %}
+            </div>
         </main>
-
+        {%- if config.extra.search_enable %}
+        {#- Upstream owns the modal: the input, the results, focus trapping,
+            keyboard navigation, the mobile close button and the translations
+            all come from it. -#}
+        <pagefind-modal></pagefind-modal>
+        {%- endif %}
 
       <footer class="l-footer">
           {% block footer -%}

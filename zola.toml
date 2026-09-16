@@ -61,11 +61,9 @@ compile_sass = true
 minify_html = false
 
 # When set to "true", a search index is built from the pages and section
-# content for `default_language`. The theme renders its search UI only when
-# this is true. This key must stay in the root table: TOML assigns bare keys
-# to the most recent table header, so placing it below `[slugify]` or
-# `[search]` silently disables the index.
-build_search_index = true
+# content for `default_language`. The theme's search is Pagefind, which indexes
+# the built HTML instead, so this can stay off.
+build_search_index = false
 
 # A list of glob patterns specifying asset files to ignore when the content
 # directory is processed. Defaults to none, which means that all asset files are
@@ -116,20 +114,6 @@ paths = "on"
 taxonomies = "on"
 anchors = "on"
 
-[search]
-# The theme's search UI reads the elasticlunr JavaScript index, which is
-# Zola's default format; the other formats will not work with it.
-index_format = "elasticlunr_javascript"
-# Whether to include the title of the page/section in the index
-include_title = true
-# Whether to include the description of the page/section in the index
-include_description = false
-# Whether to include the rendered content of the page/section in the index
-include_content = true
-# At which character to truncate the content to. Useful if you have a lot of pages and the index would
-# become too big to load on the site. Defaults to not being set.
-# truncate_content_length = 100
-
 # Optional translation object. Keys should be language codes.
 # Optional translation object. The key if present should be a language code.
 # Example:
@@ -159,8 +143,6 @@ analytics = ""
 katex_enable = true
 instantpage_enable = true
 
-# Scripts that register elasticlunr pipeline functions for a language other
-# than English, loaded in the order given before the search index is parsed.
-# Take them from https://github.com/weixsong/lunr-languages, not from the
-# lunr-languages package on npm, which is a different and incompatible project.
-# search_stemmers = ["js/lunr.stemmer.support.js", "js/lunr.fr.js"]
+# Pagefind site search; requires a `pagefind` run after `zola build`. See
+# README.
+search_enable = true

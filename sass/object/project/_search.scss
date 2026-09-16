@@ -1,24 +1,21 @@
 @import "../../variables";
 
-// `.l-header` is positioned and shares its column with `.l-main`, so the glyph
-// corners on the text column at every width, and the title stays centred on the
-// page instead of being shoved aside.
+// Pagefind lays the trigger out as an inline block that shrinks to its label,
+// which leaves it looking like a button rather than the search field it stands
+// in for. A width of its own, centred by the header's own text-align, reads as
+// a field and holds one width across every page.
+//
+// Sizing it as an inline block rather than forcing `display: block` is what
+// keeps a site built without the Pagefind step tidy: none of this applies to
+// the inline element the browser falls back to, so the space reserved below
+// collapses along with the field it was holding.
 .p-search {
-  position: absolute;
-  top: 20px; // matches the header's vertical padding
-  right: 0;
-}
+  width: 100%;
+  max-width: 480px;
+  margin: 16px auto 0;
 
-// Out of flow, the trigger no longer pushes the title around, so hold back
-// enough of the title's width for the 40px glyph in the column's corner. A
-// title too long for what is left wraps, which is the graceful failure; the
-// sibling combinator scopes this to sites that render search.
-.p-search ~ .p-title {
-  padding: 0 48px;
-}
-
-// A modal dialog still lets the page behind it scroll, which is disorienting
-// while results are on screen.
-.is-search-open {
-  overflow: hidden;
+  // The component is a custom element, so nothing renders until its script
+  // upgrades it. Holding its height keeps the article list below from jumping
+  // up the page on every load.
+  min-height: 4.2rem;
 }

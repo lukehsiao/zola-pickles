@@ -13,6 +13,10 @@ demo = "https://zola-pickles.pages.dev/"
 # Use snake_casing to be consistent with the rest of Zola
 [extra]
 
+# Pagefind site search; requires a `pagefind` run after `zola build`. See
+# README.
+search_enable = false
+
 # The theme author info: you!
 [author]
 name = "Luke Hsiao"

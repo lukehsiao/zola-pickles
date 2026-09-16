@@ -24,12 +24,16 @@ truncate(length=280) | trim | safe }}">
 {%- endif %}
 {%- endblock description %}
 
+{% block main_attrs %}{% if config.extra.search_enable %} data-pagefind-body{% endif %}{% endblock main_attrs %}
+
 {% block content %}
 <article class="p-article">
   <header>
-    <h1>{{ page.title | markdown | striptags }}</h1>
+    {#- Pagefind titles a result from the first <h1> in the document, which is
+        the site title in the header, so the post names itself explicitly. -#}
+    <h1 data-pagefind-meta="title">{{ page.title | markdown | striptags }}</h1>
     <div>
-      <div class="c-time">
+      <div class="c-time" data-pagefind-ignore>
 
         <time datetime="{{ page.date | date(format=" %F") | safe }}">
           {{ page.date | date(format="%F") }}
@@ -42,7 +46,7 @@ truncate(length=280) | trim | safe }}">
     </div>
   </header>
   {% if page.toc and page.extra.toc -%}
-  <div class="toc">
+  <div class="toc" data-pagefind-ignore>
     <strong>Contents</strong>
     <div>
       <nav id="TableOfContents">
@@ -78,7 +82,7 @@ truncate(length=280) | trim | safe }}">
   <section id="js-article" class="p-article__body">
     {{ page.content | safe }}
   </section>
-  <footer>
+  <footer data-pagefind-ignore>
     <nav class="c-pagination p-pagination">
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
