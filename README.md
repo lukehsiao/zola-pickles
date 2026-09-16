@@ -44,6 +44,7 @@ insert_anchor_links = "right"
 ```
 
 To preview the theme by itself, run `./build.sh && zola serve` from the theme's own directory: the repository doubles as the demo site, and the build step is what gives the preview a search index.
+That script is also the demo's build command on Cloudflare Pages, in place of the Zola preset's `zola build`, because Pages has to run Pagefind for the search on the demo to answer anything.
 
 ## Reference guides
 
